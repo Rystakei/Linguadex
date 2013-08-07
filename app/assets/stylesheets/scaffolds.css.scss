@@ -1,0 +1,157 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Cookie);
+
+$bodycolor: #FFFDF7; 
+$headercolor: #04859D;
+$secondheadercolor: #206876;
+$headingcolor: #37395B;
+$tableheadercolor: orange;
+/*$headingcolor: #58959A; */
+body {
+font-family: 'PT Sans Narrow', sans-serif;
+font-size: 24px;
+background-color: $bodycolor;
+margin: 0;
+padding: 0;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 120px;
+  color: white;
+  font-family: "Cookie";
+  display: inline;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+h1.second{
+  font-color: orange;
+  display: inline;
+}
+
+h2{
+  color: $headercolor;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+.tablesupport {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  font-size: 24px;
+  border-collapse: collapse;
+  border-color: orange;
+}
+
+th {
+  background-color: $tableheadercolor;
+}
+
+td {
+  border: orange dashed 1px;
+}
+
+tr {
+  border: orange solid 1px;
+}
+
+
+.header {
+  background-color: $headercolor;
+  font-weight: lighter;
+}
+.secondheader {
+  background-color: $secondheadercolor;
+}
+h2.secondheader {
+  color: white;
+}
+
+.decorative {
+  background-color: orange;
+  height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.centered {
+  text-align: center;
+  margin: auto 0;
+}
+fieldset {
+  border-style: none;
+}
+

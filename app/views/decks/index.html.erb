@@ -1,8 +1,17 @@
-<h1>Listing people</h1>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<%= render 'header' %>
+<div class = "secondheader"><h2 class = "secondheader">All User's Decks</h2> </div>
 
+
+
+<div class = "tablesupport">
 <table>
   <tr>
     <th>Name</th>
+    <th>Subject</th>
+    <th>How Many Cards</th>
+    <th>Times Reviewed</th>
+    <th>Results</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,12 +20,17 @@
 <% @decks.each do |deck| %>
   <tr>
     <td><%= deck.name %></td>
-    <td><%= link_to 'Show', deck_path(deck) %></td>
-    <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-    <td><%= link_to 'Destroy', deck_path(deck), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= deck.subject %></td>
+    <td><%= deck.cards.length %></td>
+    <td><%= deck.times_reviewed %></td>
+    <td><%= deck.results %></td>
+    <td><%= link_to 'Show', deck %></td>
+    <td><%= link_to 'Edit Card', edit_deck_path(deck) %></td>
+    <td><%= link_to 'Destroy', deck, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
 
 <br />
 

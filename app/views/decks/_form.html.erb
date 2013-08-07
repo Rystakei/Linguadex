@@ -11,20 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="field centered">
+    Deck's <%= f.label :name %>
     <%= f.text_field :name %>
+    <br />
+    <%= f.label :language %>
+    <%= f.text_field :language %>
+
   </div>
   
-  <h2>cards</h2>
-  <div class="items">
+  <h2>Cards</h2>
+  <div class="items centered">
     <%= f.nested_fields_for :cards do |f|
       render 'card', f: f
     end -%>
   </div>
-  <a href="#" class="add">add card</a>
-  
+  <div class = "centered">
+  <a href="#" class="add">Add Card</a>
+  <p>
+  <p> Finished? Press the submit button below! </p>
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>

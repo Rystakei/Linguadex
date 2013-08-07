@@ -45,7 +45,7 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to([:plain, @deck], :notice => 'deck was successfully created.') }
+        format.html { redirect_to( @deck, :notice => 'deck was successfully created.') }
         format.xml  { render :xml => @deck, :status => :created, :location => @deck }
       else
         format.html { render :action => "new" }
@@ -61,7 +61,7 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
-        format.html { redirect_to([:plain, @deck], :notice => 'deck was successfully updated.') }
+        format.html { redirect_to(@deck, :notice => 'deck was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,7 +77,7 @@ class DecksController < ApplicationController
     @deck.destroy
 
     respond_to do |format|
-      format.html { redirect_to(plain_people_url) }
+      format.html { redirect_to(decks_url) }
       format.xml  { head :ok }
     end
   end
