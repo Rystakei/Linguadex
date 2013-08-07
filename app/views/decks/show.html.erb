@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @deck.name %>
+</p>
+
+<h2>Phones</h2>
+<% if @deck.cards.any? %>
+  <ul>
+    <% for card in @deck.cards %>
+      <li><%= card.term %> (<%= card.definition %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This person has no phones yet.</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>
