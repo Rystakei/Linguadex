@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20130807022131) do
 
   create_table "cards", :force => true do |t|
-    t.integer  "deck_id"
     t.string   "term"
     t.string   "definition"
     t.datetime "created_at", :null => false
