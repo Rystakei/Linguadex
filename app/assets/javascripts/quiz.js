@@ -15,7 +15,6 @@ var terms = new Array();
 var definitions = new Array(); 
 
 $.getJSON('/decks/1.json', function(data) {
- 	$('body').append("Cards: <p>");
  	// Iterate through data.cards array and push the term and definition into the appropriate arrays
 	$.each(data.cards, function(index, card){
   		terms.push(card.term);
@@ -53,9 +52,10 @@ var counter = 0;
 
 
 // Add the input form for the first term to the web page
-$('body').append('<div id="quizdiv" class = "centered">');
- $('#quizdiv').append('Term: <span class = "term">' + terms[RandomizedCardIndices[counter]] + '</span><br /><br /></span><input placeholder="Enter Term"><button type="button" name = "button">Submit</button><br />');
-
+$('body').append('<div id="quizdiv" class="centered"></div>');
+ $('#quizdiv').append('<span class="term"><h1>' + terms[RandomizedCardIndices[counter]] + '</h1></span><br /><br /></span><input placeholder="Enter Answer"><button type="button" name = "button">Submit</button><br />');
+$('#quizdiv').append('<br /><br /><span id="notification"></span>')
+$('#quizdiv').before('<div class="answers centered">Correct Answers: <span id="correct">0/' + amountOfCards +'</span><br />Incorrect Answers: <span id="incorrect"><span id="correct">0/' + amountOfCards +'</span></div>');
 
 //The user should click on the button after the first option is chosen. Afterwards, their input will be evaluated and they
 //Will receive a message about whether it was correct or not. The answer will be added to the appropriate correct or
@@ -69,20 +69,21 @@ $( "button" ).first().click(function() {
 
   		if (answer.val() === definitions[RandomizedCardIndices[counter]])
   		{
-  			$('#quizdiv').prepend('<span class = "notification">Yup, ' + definitions[RandomizedCardIndices[counter]] + ' is the correct answer,' + answer.val() + '. Good job!</span>');
+  			$('#notification').show(); 
+  			$('#notification').text('Yup, ' + definitions[RandomizedCardIndices[counter]] + ' is the correct answer,' + answer.val() + '. Good job!');
   			correctAnswers.push(answer);
-  			$('#quizdiv').append('<p>Correct Answers: ' + correctAnswers.length + '<p>Incorrect Answers: ' + incorrectAnswers.length + '</p>');
+  			$('#correct').first().text(correctAnswers.length + "/" + amountOfCards);
+  			$('#centered').append('<p>Correct Answers: ' + correctAnswers.length + '<p>Incorrect Answers: ' + incorrectAnswers.length + '</p>');
   			counter ++;
-  			$('span').first().text(terms[RandomizedCardIndices[counter]]);
+  			$('.term').text("").append('<h1>' + terms[RandomizedCardIndices[counter]]+'</h1>');
   			answer.val(""); 
-  			$('.notification').fadeOut(3800).remove(); 
-  			$('.term').text(terms[RandomizedCardIndices[counter]]);
+  			$('#notification').fadeOut(3800); 
 
   		}
   		else
   		{
-  			alert("Nope, not working. Counter: " + counter + "Definition: " + definitions[RandomizedCardIndices[counter]] )
-  			// alert("Sorry, that answer," + answer.val() + "is incorrect. The answer should be: " + definitions[RandomizedCardIndices[counter]]); 
+  			$('#notification').show(); 
+  			$('#notification').text("Sorry, that answer," + answer.val() + "is incorrect. The answer should be: " + definitions[RandomizedCardIndices[counter]]); 
   		}
 
 
