@@ -59,5 +59,7 @@ Linguadex::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   resources :decks
+  resources :cards
+  match 'decks/:id/quiz' => 'decks#quiz'
 
 end

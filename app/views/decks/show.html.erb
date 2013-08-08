@@ -1,16 +1,15 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <%= render 'header' %>
-<div class = "secondheader"><h2 class = "secondheader">All User's Decks</h2> </div>
-
+<div class = "secondheader"><h2 class = "secondheader"><%= @deck.name %></h2> </div>
+<div class = "decorative">Terms and Definitions</div>
 
 <p id="notice"><%= notice %></p>
+<div class = "options">
+<p> Take Recall Quiz</p>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @deck.name %>
-</p>
 
-<h2>Phones</h2>
+ <div class = "centered">
 <% if @deck.cards.any? %>
   <ul>
     <% for card in @deck.cards %>
@@ -18,8 +17,9 @@
     <% end %>
   </ul>
 <% else %>
-  <p>This person has no phones yet.</p>
+  <p>This deck has no cards yet. Make some! </p>
 <% end %>
+</div>
 
 
 

@@ -1,84 +1,94 @@
 class DecksController < ApplicationController
-  # GET /people
-  # GET /people.xml
+  # GET /decks
+  # GET /decks.json
   def index
     @decks = Deck.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @people }
+      format.json { render json: @decks.to_json(:include => :cards) }
     end
   end
 
-  # GET /people/1
-  # GET /people/1.xml
+  # GET /decks/1
+  # GET /decks/1.json
   def show
     @deck = Deck.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @deck }
+      format.json { render json: @deck.to_json(:include => :cards) }
     end
   end
 
-  # GET /people/new
-  # GET /people/new.xml
+  # GET /decks/new
+  # GET /decks/new.json
   def new
     @deck = Deck.new
-    @deck.cards.build
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @deck }
+      format.json { render json: @deck }
+
     end
   end
 
-  # GET /people/1/edit
+  # GET /decks/1/edit
   def edit
     @deck = Deck.find(params[:id])
   end
 
-  # POST /people
-  # POST /people.xml
+  # POST /decks
+  # POST /decks.json
   def create
     @deck = Deck.new(params[:deck])
 
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to( @deck, :notice => 'deck was successfully created.') }
-        format.xml  { render :xml => @deck, :status => :created, :location => @deck }
+        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        format.json { render json: @deck, status: :created, location: @deck }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @deck.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /people/1
-  # PUT /people/1.xml
+  # PUT /decks/1
+  # PUT /decks/1.json
   def update
     @deck = Deck.find(params[:id])
 
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
-        format.html { redirect_to(@deck, :notice => 'deck was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @deck.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /people/1
-  # DELETE /people/1.xml
+ def quiz
+    @deck = Deck.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @deck }
+    end
+  end
+
+
+  # DELETE /decks/1
+  # DELETE /decks/1.json
   def destroy
     @deck = Deck.find(params[:id])
     @deck.destroy
 
     respond_to do |format|
-      format.html { redirect_to(decks_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to decks_url }
+      format.json { head :no_content }
     end
   end
 end
