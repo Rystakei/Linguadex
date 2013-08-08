@@ -69,8 +69,9 @@ $( "button" ).first().click(function() {
 
   		if (answer.val() === definitions[RandomizedCardIndices[counter]])
   		{
+  			$('.term').text("").append('<h1>' + definitions[RandomizedCardIndices[counter]]+'</h1>');
   			$('#notification').show(); 
-  			$('#notification').text('Yup, ' + definitions[RandomizedCardIndices[counter]] + ' is the correct answer,' + answer.val() + '. Good job!');
+  			$('#notification').text('Yup, ' + definitions[RandomizedCardIndices[counter]] + ' is the correct answer. Good job!');
   			correctAnswers.push(answer);
   			$('#correct').first().text(correctAnswers.length + "/" + amountOfCards);
   			$('#centered').append('<p>Correct Answers: ' + correctAnswers.length + '<p>Incorrect Answers: ' + incorrectAnswers.length + '</p>');
