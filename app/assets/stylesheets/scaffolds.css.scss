@@ -391,4 +391,11 @@ h2.signingup {
   text-shadow: 2px 2px 5px black;
 }
 
-
+.background{
+  background-color: $headercolor;
+  padding: 0px;
+  margin: 0px;
+}
+.background a {
+  color: white;
+}
