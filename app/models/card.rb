@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
- attr_accessible :term, :definition
+ attr_accessible :deck_id, :term, :definition
 
   def as_json(options={})
     super only: [:id, :term, :definition]
