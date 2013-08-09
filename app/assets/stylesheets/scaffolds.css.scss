@@ -2,12 +2,17 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 @import url(http://fonts.googleapis.com/css?family=Cookie);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 $bodycolor: #FFFDF7; 
 $headercolor: #04859D;
 $secondheadercolor: #206876;
 $headingcolor: #37395B;
 $tableheadercolor: orange;
+
+html, body {
+  height: 100%;
+}
 /*$headingcolor: #58959A; */
 body {
 font-family: 'PT Sans Narrow', sans-serif;
@@ -240,3 +245,118 @@ box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
     color: white;
   }
 }
+
+.indexcontainer {
+  background-color: $headercolor;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.indexcontainer h1 {
+  font-size: 300px;
+  text-shadow: 2px 2px 5px #800000;
+}
+
+.indexcontainer h2{
+  font-size: 40px;
+  font-family: "Lobster";
+  color: orange;
+  text-shadow: 2px 2px 5px #800000;
+  margin-bottom: 10px;
+}
+
+.introblocks {
+margin-top: 0px;
+}
+
+.block {
+vertical-align: top;
+background-color: white;
+color: $headercolor;
+-moz-border-radius: 15px;
+border-radius: 15px;
+-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+width: 225px;
+height: 200px;
+display: inline-block;
+font-family: "Bree Serif";
+font-size: 40px;
+text-shadow: 2px 2px 5px #808080;
+line-height: 40px;
+}
+
+
+
+.block2 {
+vertical-align: top;
+background-color: orange;
+color: white;
+-moz-border-radius: 15px;
+border-radius: 15px;
+-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+width: 225px;
+height: 200px;
+margin-left: 30px;
+margin-right: 30px;
+display: inline-block;
+font-family: "Bree Serif";
+font-size: 40px;
+text-shadow: 2px 2px 5px #800000;
+}
+
+.block3 {
+vertical-align: top;
+background-color: $secondheadercolor;
+color: orange;
+-moz-border-radius: 15px;
+border-radius: 15px;
+-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+width: 225px;
+height: 200px;
+display: inline-block;
+font-family: "Bree Serif";
+font-size: 40px;
+line-height: 40px;
+}
+
+.block h2 {
+margin-top: 30px;
+color: $headercolor;
+font-family: "Lato";
+font-size: 55px;
+line-height: 60px;
+text-shadow: 2px 2px 5px #808080;
+}
+.block2 h2 {
+margin-top: 30px;
+color: white;
+font-family: "Lato";
+font-size: 55px;
+text-shadow: 2px 2px 5px #808080;
+line-height: 60px;
+}
+
+.block3 h2 {
+margin-top: 30px;
+color: orange;
+font-family: "Lato";
+font-size: 55px;
+text-shadow: 2px 2px 5px darken(#04859D, 30%);
+line-height: 60px;
+}
+h2.inline {
+  margin-bottom: 30px;
+}
+
+.introblocks {
+  margin-bottom: 30px;
+}
+
+
