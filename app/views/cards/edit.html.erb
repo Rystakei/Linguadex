@@ -1,0 +1,35 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<%= render 'header' %>
+<div class = "secondheader"><h2 class = "secondheader">Edit Card </h2> </div>
+<div class = "decorative"> </div>
+<div class = "centered">
+
+Make changes to your card below. 
+<br/> <br/>
+<%= form_for(@card) do |f| %>
+<fieldset class="item">
+Term
+<div class = "carddiv">
+<!--   <%= f.label :term %> -->
+  <%= f.text_field :term %>
+  <br/>
+</div>
+<br/>
+Definition
+<div class = "carddiv">
+<!--     <%= f.label :definition %> -->
+  <%= f.text_field :definition %>
+
+ <br/>
+  <a href="#" class="remove" data-confirm="Are you sure?">remove</a>
+
+  <%= f.hidden_field :id %>
+  <%= f.hidden_field :_destroy %>
+</fieldset>
+<% end %>
+</div>
+</div>
+<br />
+
+<%= link_to 'Show', card_path(@card) %> |
+<%= link_to 'Back', cards_path %>
