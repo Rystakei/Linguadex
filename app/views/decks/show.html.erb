@@ -1,26 +1,36 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!-- <p id="notice"><%= notice %></p> -->
 <%= render 'header' %>
 <div class = "secondheader"><h2 class = "secondheader"><%= @deck.name %></h2> </div>
-<div class = "decorative">Terms and Definitions</div>
-
-<p id="notice"><%= notice %></p>
-<div class = "options">
-<p> Take Recall Quiz</p>
+<div class = "decorative"></div>
+<div class = "centered"> <h2> Statistics </h2> <p> Quizzes Taken: 0</p> <p> Average Score : N/A </p></div>
+<div class = "centered"><div class = "emphasis"><h3> <%= link_to 'Take Recall Quiz', quiz_path %></h3></div></div><br />
 </div>
 
 
- <div class = "centered">
-<% if @deck.cards.any? %>
-  <ul>
-    <% for card in @deck.cards %>
-      <li><%= card.term %> (<%= card.definition %>)</li>
-    <% end %>
-  </ul>
+<div class = "tablesupport">
+<% if @deck.cards.any? %>	
+<table>
+  <tr>
+    <th>Term</th>
+    <th>Definition</th>
+    <th></th>
+    <th></th>
+  </tr>
+	<% @deck.cards.each do |card| %>
+	  <tr>
+	    <td><%= card.term %></td>
+	    <td><%= card.definition %></td>
+	    <td><%= link_to 'Edit Card', edit_card_path(card) %></td>
+	    <td><%= link_to 'Delete Card', card, confirm: 'Are you sure?', method: :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<br />
 <% else %>
-  <p>This deck has no cards yet. Make some! </p>
+	<p>This deck has no cards yet. Make some! </p>
 <% end %>
-</div>
-
+	</div>
 
 
 <%= link_to 'Edit', edit_deck_path(@deck) %> |

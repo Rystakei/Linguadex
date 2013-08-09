@@ -1,8 +1,17 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <%= render 'header' %>
 <div class = "secondheader"><h2 class = "secondheader">All User's Decks</h2> </div>
+<div class = "decorative"></div>
+
+<div class = "centered">
+
+    <h2>Total Decks: <%= Deck.all.size %></h2>
+    All of your current decks are listed below.
+    <br/><br />
+</div> 
 
 
+<div class = "centered"><div class = "emphasis"><h3> <%= link_to 'Add Deck', new_deck_path %></h3></div></div><br />
 
 <div class = "tablesupport">
 <table>

@@ -1,9 +1,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <%= render 'header' %>
 <div class = "secondheader"><h2 class = "secondheader"><%= @deck.name %> Recall Quiz</h2> </div>
-<div class = "decorative">Test your recall ability. </div>
+<div class = "decorative"> </div>
 
 <p id="notice"><%= notice %></p>
+<p id="deckid"><%= @deck.id %></p>
 
 
 <%= link_to 'Back', decks_path %>
