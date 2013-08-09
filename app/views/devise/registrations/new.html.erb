@@ -1,0 +1,26 @@
+<div class = "indexcontainer centered">
+<h1>Linguadex</h1>
+
+
+
+
+<h2>Create A Lingodex Account</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><h2 class = "signingup"><%= f.label :password %></h2><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><h2 class = "signingup"><%= f.label :password %></h2><br />
+  <%= f.password_field :password %></div>
+
+  <div><h2 class = "signingup"><%= f.label :password_confirmation %></h2><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up", :class => 'signingup' %></h2></div>
+<% end %>
+
+Already have an account? <%= render "devise/shared/links" %>
+
+</div>

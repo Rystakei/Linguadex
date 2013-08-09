@@ -286,6 +286,10 @@ font-family: "Bree Serif";
 font-size: 40px;
 text-shadow: 2px 2px 5px #808080;
 line-height: 40px;
+    &:hover {
+    background-color: orange;
+  }
+
 }
 
 
@@ -307,6 +311,9 @@ display: inline-block;
 font-family: "Bree Serif";
 font-size: 40px;
 text-shadow: 2px 2px 5px #800000;
+    &:hover {
+    background-color: white;
+  }
 }
 
 .block3 {
@@ -324,15 +331,20 @@ display: inline-block;
 font-family: "Bree Serif";
 font-size: 40px;
 line-height: 40px;
+    &:hover {
+    background-color: orange;
+  }
 }
 
 .block h2 {
 margin-top: 30px;
-color: $headercolor;
 font-family: "Lato";
 font-size: 55px;
 line-height: 60px;
 text-shadow: 2px 2px 5px #808080;
+    &:hover {
+    color: white;
+  }
 }
 .block2 h2 {
 margin-top: 30px;
@@ -341,6 +353,9 @@ font-family: "Lato";
 font-size: 55px;
 text-shadow: 2px 2px 5px #808080;
 line-height: 60px;
+    &:hover {
+    color: orange;
+  }
 }
 
 .block3 h2 {
@@ -348,8 +363,11 @@ margin-top: 30px;
 color: orange;
 font-family: "Lato";
 font-size: 55px;
-text-shadow: 2px 2px 5px darken(#04859D, 30%);
+text-shadow: 2px 2px 5px darken(#04859D, 20%);
 line-height: 60px;
+    &:hover {
+    color: $headercolor;
+  }
 }
 h2.inline {
   margin-bottom: 30px;
@@ -357,6 +375,20 @@ h2.inline {
 
 .introblocks {
   margin-bottom: 30px;
+}
+
+.indexlinks a{
+  color: white;
+    &:hover {
+    color: yellow;
+  }
+}
+
+h2.signingup {
+  color: white;
+  padding: 0px;
+  margin-bottom: -20px;
+  text-shadow: 2px 2px 5px black;
 }
 
 
