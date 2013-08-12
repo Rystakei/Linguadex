@@ -2,7 +2,7 @@
 
 
 LinguaDex is an application that allows users to add flashcards and keep track of the progress they are making
-in acquiring new vocabulary. Many people see language learning as daunting, but I feel a good way to encourage
+in acquiring new vocabulary. Many people see language learning as daunting, and I feel that a good way to encourage
 people to keep learning is to show them how much progress they have been making by segmenting their journey into 
 quantifiable milestones.One way to do this is by looking at how many hours of focused learning the average 
 person takes to learn a language. (Estimates for how long it will take a native ENglish speaker to learn another language
