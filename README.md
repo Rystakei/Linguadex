@@ -1,4 +1,4 @@
-LinguaDex
+**LinguaDex**
 
 
 LinguaDex is an application that allows users to add flashcards and keep track of the progress they are making
@@ -28,11 +28,11 @@ The purpose of this application is to encourage the user to study and practice 3
 
 A user will be able to study different languages, and the program will eventually keep track of levels of different languages. 
 
-How to Use Linguadex
+**How to Use Linguadex**
 
 At the present time, a user can now sign up, log in, add decks, and take a recall quiz. 
 
-Future goals for enhancement include:
+**Future goals for enhancement include:**
 
 Creating a deck of flashcards based on the 
 Spaced repetition
