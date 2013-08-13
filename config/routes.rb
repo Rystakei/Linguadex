@@ -63,5 +63,6 @@ Linguadex::Application.routes.draw do
   resources :decks
   resources :cards
   match 'decks/:id/quiz' => 'decks#quiz', :as => :quiz
+  match 'decks/new/addfromsite' => 'decks#addfromsite', :as => :site
 
 end

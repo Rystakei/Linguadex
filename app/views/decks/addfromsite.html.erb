@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>select demo</title>
+  <style>
+  p { color:blue; }
+  div { color:red; }
+  	</style>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+
+
+<input id="myElement" value="Lorem Ipsum" />
+<p> Paragraph goes here</p>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<%= render 'header' %>
+<div class = "secondheader"><h2 class = "secondheader"><%= @deck.name %> Add Deck From External Site</h2> </div>
+<div class = "decorative"> </div>
+
+<% require 'open-uri' %>
+<p id="notice"><%= notice %></p>
+<p id="deckid"><%= @deck.id %></p>
+<% url = "http://www.lemonde.fr/sport/article/2013/08/13/perche-la-tsarine-isinbayeva-triomphe-devant-son-public_3461124_3242.html" %>
+<% doc = Nokogiri::HTML(open(url)) %>
+<div class = "headingdiv"><p> The webpage will appear below</p> </div>
+<div id = "results"><p>Selected Terms Go Below</p></div>
+
+<div>
+<%= raw(doc.to_html) %>
+
+
+</div>
+<p> You can use this feature to enter a url, load the page, and add selected text to the terms.
+	If definitions are available, we will provide the definitions and then allow you to submit your deck.
+</p>
+
+
+<h2> The words you've selected are: </h2>
+<div id = "results"> 
+
+
+</div>
+
+Get highlighted words and push them into an array
+Look up definitions
+Send the results to Rails
+
+
+ 
+ <script>
+
+
+
+
+
+
+
+ 
+ selectedTerms = []
+
+if(!window.Kolich){
+  Kolich = {};
+}
+
+Kolich.Selector = {};
+Kolich.Selector.getSelected = function(){
+  var t = '';
+  if(window.getSelection){
+    t = window.getSelection();
+  }else if(document.getSelection){
+    t = document.getSelection();
+  }else if(document.selection){
+    t = document.selection.createRange().text;
+  }
+  return t;
+}
+
+Kolich.Selector.mouseup = function(){
+  var st = Kolich.Selector.getSelected();
+  if(st!=''){
+    alert("You selected:\n"+st);
+    var selection = $('#results').append("<p>Term: " + st + "</p>");
+    selectedTerms.push(selection.text());
+  }
+}
+
+$(document).ready(function(){
+  $(document).bind("mouseup", Kolich.Selector.mouseup);
+});
+
+ </script>
+ 
+</body>
+</html>
+<script>
+
+<input id="myElement" value="Lorem Ipsum" />
+ selectedTerms = []
+
+if(!window.Kolich){
+  Kolich = {};
+}
+
+Kolich.Selector = {};
+Kolich.Selector.getSelected = function(){
+  var t = '';
+  if(window.getSelection){
+    t = window.getSelection();
+  }else if(document.getSelection){
+    t = document.getSelection();
+  }else if(document.selection){
+    t = document.selection.createRange().text;
+  }
+  return t;
+}
+
+Kolich.Selector.mouseup = function(){
+  var st = Kolich.Selector.getSelected();
+  if(st!=''){
+    alert("You selected:\n"+st);
+
+    selectedTerms.push(selection.text());
+  }
+}
+
+$(document).ready(function(){
+  $(document).bind("mouseup", Kolich.Selector.mouseup);
+});
+
+ </script>
+ 
+</body>
+</html>

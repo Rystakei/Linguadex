@@ -13,6 +13,8 @@ gem 'awesome_nested_fields'
 
 gem 'rabl'
 
+gem 'nokogiri'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
