@@ -26,8 +26,16 @@
 <p id="deckid"><%= @deck.id %></p>
 <% url = "http://www.lemonde.fr/sport/article/2013/08/13/perche-la-tsarine-isinbayeva-triomphe-devant-son-public_3461124_3242.html" %>
 <% doc = Nokogiri::HTML(open(url)) %>
-<div class = "headingdiv"><p> The webpage will appear below</p> </div>
-<div id = "results"><p>Selected Terms Go Below</p></div>
+<div class = "headingdiv">
+	<p> The webpage will appear below. When finished, please hit the button below. </p> 
+<div class = "centered">
+	<div class = "emphasis">
+		<h3> <%= link_to 'Add Deck', new_deck_path %></h3>
+	</div>
+</div>
+<br />
+</div>
+<div id = "results"><p>Selected Terms Go Below <div id = "wordbank">quand Silva, vice-championne olympique, a </div></p></div>
 
 <div>
 <%= raw(doc.to_html) %>
@@ -52,14 +60,25 @@ Send the results to Rails
 
  
  <script>
+ termsArray = [];
+ definitionArray = []; 
+
+ //Finding Translation and Appending Term
+function getTranslation(term){
+	var query = "http://api.wordreference.com/0.8/22816/json/fren/"+ term; 
+
+	var result = $.ajax({
+	    url: query,
+	    type:'GET',
+	    dataType:'JSONP',
+	    success: function(data){
+	    var translation = data["term0"]["PrincipalTranslations"]["0"]["FirstTranslation"]["term"]
+	    $('#wordbank').prepend("Definition: " + translation);
+	    }
+	});
+};
 
 
-
-
-
-
-
- 
  selectedTerms = []
 
 if(!window.Kolich){
@@ -82,9 +101,11 @@ Kolich.Selector.getSelected = function(){
 Kolich.Selector.mouseup = function(){
   var st = Kolich.Selector.getSelected();
   if(st!=''){
-    alert("You selected:\n"+st);
-    var selection = $('#results').append("<p>Term: " + st + "</p>");
+    var selection = $('#wordbank').append("<br />Term: <span class='justadded'>" + st + " </span>");
+    var newTerm = $('.justadded').first().text(); 
     selectedTerms.push(selection.text());
+    getTranslation(newTerm); 
+    $('.justadded').removeClass('justadded');
   }
 }
 
@@ -93,45 +114,8 @@ $(document).ready(function(){
 });
 
  </script>
- 
-</body>
-</html>
-<script>
 
-<input id="myElement" value="Lorem Ipsum" />
- selectedTerms = []
 
-if(!window.Kolich){
-  Kolich = {};
-}
-
-Kolich.Selector = {};
-Kolich.Selector.getSelected = function(){
-  var t = '';
-  if(window.getSelection){
-    t = window.getSelection();
-  }else if(document.getSelection){
-    t = document.getSelection();
-  }else if(document.selection){
-    t = document.selection.createRange().text;
-  }
-  return t;
-}
-
-Kolich.Selector.mouseup = function(){
-  var st = Kolich.Selector.getSelected();
-  if(st!=''){
-    alert("You selected:\n"+st);
-
-    selectedTerms.push(selection.text());
-  }
-}
-
-$(document).ready(function(){
-  $(document).bind("mouseup", Kolich.Selector.mouseup);
-});
-
- </script>
  
 </body>
 </html>

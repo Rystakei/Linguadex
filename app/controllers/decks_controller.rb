@@ -64,6 +64,16 @@ class DecksController < ApplicationController
 
   end
 
+    def rendersite
+    @deck = Deck.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @deck }
+    end
+
+  end
+
 
   # PUT /decks/1
   # PUT /decks/1.json
