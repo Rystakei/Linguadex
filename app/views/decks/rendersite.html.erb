@@ -55,7 +55,7 @@ function getTranslation(term){
 	    dataType:'JSONP',
 	    success: function(data){
 	    var translation = data["term0"]["PrincipalTranslations"]["0"]["FirstTranslation"]["term"]
-	    $('#wordbank').append("Definition: " + translation);
+	    $('#wordbank').append('<span class="label">Definition:</span> '+ translation);
 	    }
 	});
 };
@@ -83,7 +83,7 @@ Kolich.Selector.getSelected = function(){
 Kolich.Selector.mouseup = function(){
   var st = Kolich.Selector.getSelected();
   if(st!=''){
-    var selection = $('#wordbank').append("<br />Term: <span class='justadded'>" + st + " </span>");
+    var selection = $('#wordbank').append('<br /><span class="label">Term:</span> <span class="justadded">' + st + ' </span>');
     var newTerm = $('.justadded').first().text(); 
     selectedTerms.push(selection.text());
     getTranslation(newTerm); 
