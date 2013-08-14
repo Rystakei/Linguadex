@@ -16,7 +16,7 @@
  Viewing website: <input value="http://www.lemonde.fr"></input>
 </div>
   <div id = "results">
-    <h2>Selected Terms and Definitions</h2>
+   <h2>Selected Terms and Definitions</h2>
     <br />
     <br /> 
     <div id = "wordbank"> 
@@ -29,11 +29,10 @@
 
       <div class="addingcards">
         <div id="addingterms">
-          Terms go here
+         <div class="selectionheaders">Terms</div> 
+
         </div>
-        <div id="addingdefinitions">
-          Definitions go here
-          <br/>
+        <div id="addingdefinitions"><div class="selectionheaders">Definitions</div>
         </div>
     </div>
 
@@ -68,7 +67,7 @@ Send the results to Rails
  
  <script>
  termsArray = [];
- definitionArray = []; 
+ definitionsArray = []; 
 
  //Finding Translation and Appending Term
 function getTranslation(term){
@@ -80,7 +79,8 @@ function getTranslation(term){
 	    dataType:'JSONP',
 	    success: function(data){
 	    var translation = data["term0"]["PrincipalTranslations"]["0"]["FirstTranslation"]["term"]
-	    $('#addingdefinitions').append('<span class="label">Definition:</span> '+ translation + "<br/>");
+	    $('#addingdefinitions').append('<div class="selection"><span class="label">Definition:</span> '+ translation + "</div>");
+      definitionsArray.push(translation);
 	    }
 	});
 };
@@ -108,9 +108,9 @@ Kolich.Selector.getSelected = function(){
 Kolich.Selector.mouseup = function(){
   var st = Kolich.Selector.getSelected();
   if(st!=''){
-    var selection = $('#addingterms').append('<br /><span class="label">Term:</span> <span class="justadded">' + st + ' </span>');
+    var selection = $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + st + ' </span></div>');
     var newTerm = $('.justadded').first().text(); 
-    selectedTerms.push(selection.text());
+    termsArray.push(newTerm);
     getTranslation(newTerm); 
     $('.justadded').removeClass('justadded');
   }
@@ -119,6 +119,16 @@ Kolich.Selector.mouseup = function(){
 $(document).ready(function(){
   $(document).bind("mouseup", Kolich.Selector.mouseup);
 });
+
+
+function addDeck() {
+  var data = {
+    terms: termsArray,
+    definitions: definitionsArray
+  }
+
+  $.post('deck/create', data)
+}
 
  </script>
 </body>
