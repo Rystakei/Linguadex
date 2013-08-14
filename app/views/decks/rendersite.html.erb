@@ -12,12 +12,37 @@
 	<div class = "emphasis"><!-- 
 		<h3> <%= link_to 'Add Deck', new_deck_path %></h3> -->
   </div>
-    <div id = "results"><h2>Selected Terms and Definitions</h2><br /><br /> <div id = "wordbank"> quand Silva, vice-championne olympique, a </p></div></div>
-	</div>
+  <div class = "urldiv">
+ Viewing website: <input value="http://www.lemonde.fr"></input>
+</div>
+  <div id = "results">
+    <h2>Selected Terms and Definitions</h2>
+    <br />
+    <br /> 
+    <div id = "wordbank"> 
+      Double click on terms in the article below to add them to the wordbank. 
+      <br /><br />
+    <span class="label">Done</span>
+      <hr>
+      </p>
+
+
+      <div class="addingcards">
+        <div id="addingterms">
+          Terms go here
+        </div>
+        <div id="addingdefinitions">
+          Definitions go here
+          <br/>
+        </div>
+    </div>
+
+   
+    </div>
+  </div>
+ </div>
 </div>
 <br />
-
-
 
 <div>
 <%= raw(doc.to_html) %>
@@ -55,7 +80,7 @@ function getTranslation(term){
 	    dataType:'JSONP',
 	    success: function(data){
 	    var translation = data["term0"]["PrincipalTranslations"]["0"]["FirstTranslation"]["term"]
-	    $('#wordbank').append('<span class="label">Definition:</span> '+ translation);
+	    $('#addingdefinitions').append('<span class="label">Definition:</span> '+ translation + "<br/>");
 	    }
 	});
 };
@@ -83,7 +108,7 @@ Kolich.Selector.getSelected = function(){
 Kolich.Selector.mouseup = function(){
   var st = Kolich.Selector.getSelected();
   if(st!=''){
-    var selection = $('#wordbank').append('<br /><span class="label">Term:</span> <span class="justadded">' + st + ' </span>');
+    var selection = $('#addingterms').append('<br /><span class="label">Term:</span> <span class="justadded">' + st + ' </span>');
     var newTerm = $('.justadded').first().text(); 
     selectedTerms.push(selection.text());
     getTranslation(newTerm); 
