@@ -18,3 +18,13 @@
 $(document).ready(function(e) {
   $('FORM').nestedFields();
 });
+
+$(document).ready(function() {
+$('.block2').hover(function){
+	var h2 = $(this).find("h2");
+	h2.attr("color", "pink");
+}; function() { //handlerOut
+var h2 = $(this).find("h2");
+h2.attr("color", "white"); 
+}
+});

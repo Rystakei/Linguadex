@@ -1,7 +1,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <!-- <p id="notice"><%= notice %></p> -->
-<h2> Deck: <%= @deck.name %>
-<div class = "centered bam"><h2> <%= link_to 'Take Recall Quiz', quiz_path %></h2></div><br />
+<h2> <%= @deck.name %> Deck </h2>
+<div class = "centered bam"><br />
+	<h3> <%= link_to 'Take Recall Quiz', quiz_path %></h3>
+	<h3><%= link_to 'Edit Deck', edit_deck_path(@deck) %></h3>
+</div> 
 </div>
 
 
@@ -30,5 +33,5 @@
 	</div>
 
 
-<%= link_to 'Edit', edit_deck_path(@deck) %> |
+
 <%= link_to 'Back', decks_path %>
