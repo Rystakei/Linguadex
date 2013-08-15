@@ -79,6 +79,9 @@ function getTranslation(term){
 	    dataType:'JSONP',
 	    success: function(data){
 	    var translation = data["term0"]["PrincipalTranslations"]["0"]["FirstTranslation"]["term"]
+      //Add the term to the terms div
+      $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + term + ' </span></div>');
+      //Add the definition to definitions div
 	    $('#addingdefinitions').append('<div class="selection"><span class="label">Definition:</span> '+ translation + "</div>");
       definitionsArray.push(translation);
 	    }
@@ -108,8 +111,9 @@ Kolich.Selector.getSelected = function(){
 Kolich.Selector.mouseup = function(){
   var st = Kolich.Selector.getSelected();
   if(st!=''){
-    var selection = $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + st + ' </span></div>');
-    var newTerm = $('.justadded').first().text(); 
+    // var selection = $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + st + ' </span></div>');
+    // var newTerm = $('.justadded').first().text(); 
+    var newTerm = "" + st + ""; 
     termsArray.push(newTerm);
     getTranslation(newTerm); 
     $('.justadded').removeClass('justadded');
