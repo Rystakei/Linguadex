@@ -1,15 +1,16 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<div class = "centered">
-    <h2>Your Decks</h2>
+<div class = "centered bam">
+    <h2 class=>Your Decks</h2>
     <h3> Total: <%= Deck.all.size %></h3>
     All of your current decks are listed below.
     <br/><br />
 </div> 
 
 
-<div class = "centered bam">
-    <h2><%= link_to 'Add Deck By Hand', new_deck_path %></h3>
-    <h2><%= link_to 'Add Deck From Website', rendersite_path %></h2>
+<div class = "centered bam bam2">
+    <h2> Add New Deck:
+    <h3><%= link_to 'Standard', new_deck_path %></h3>
+    <h3><%= link_to 'Add Deck From Website', rendersite_path %></h3>
 
 </div>
 <br />
