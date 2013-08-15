@@ -1,14 +1,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <div class = "centered bam">
     <h2 class=>Your Decks</h2>
-    <h3> Total: <%= Deck.all.size %></h3>
+    <h3> Total Decks: <%= Deck.all.size %></h3>
     All of your current decks are listed below.
     <br/><br />
 </div> 
 
 
 <div class = "centered bam bam2">
-    <h2> Add New Deck:
+    <h3> Add New Deck:</h3>
     <h3><%= link_to 'Standard', new_deck_path %></h3>
     <h3><%= link_to 'Add Deck From Website', rendersite_path %></h3>
 
@@ -33,7 +33,7 @@
     <td><%= deck.cards.length %></td>
     <td><%= deck.times_reviewed %></td>
     <td><%= link_to 'Edit Deck', edit_deck_path(deck) %></td>
-    <td><%= link_to 'Destroy', deck, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete Deck', deck, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

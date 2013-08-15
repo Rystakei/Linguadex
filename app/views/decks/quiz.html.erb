@@ -1,10 +1,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<%= render 'header' %>
-<div class = "secondheader"><h2 class = "secondheader"><%= @deck.name %> Recall Quiz</h2> </div>
-<div class = "decorative"> </div>
+<h2><%= @deck.name %> Recall Quiz</h2> 
 
 <p id="notice"><%= notice %></p>
 <p id="deckid"><%= @deck.id %></p>
+<div id="quizdiv" class="centered"></div>
 
 
+<!-- Results Div Below -->
+<div class="quizended">
+</div>
+<div class = "bottom">
 <%= link_to 'Back', decks_path %>
+</div>

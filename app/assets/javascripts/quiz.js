@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+  //hide the id
+
+  $('#deckid').hide(); 
 	// Get the length of an associative array
 	Object.size = function(obj) {
     var size = 0, key;
@@ -49,7 +53,7 @@ $(document).ready(function(){
     var correctAnswers = new Array(); 
     var incorrectAnswers = new Array(); 
     // Add the input form for the first term to the web page
-    $('body').append('<div id="quizdiv" class="centered"></div>');
+    // $('body').append('<div id="quizdiv" class="centered"></div>');
     $('#quizdiv').append('<span class="term"><h1>' + terms[cardIndices[counter]] + '</h1></span><br /><br /></span><input placeholder="Enter Answer"><button type="button" name = "button">Submit</button><br />');
     $('#quizdiv').append('<br /><br /><span id="notification"></span>')
     $('#quizdiv').before('<div class="answers centered">Correct Answers: <span id="correct">0/' + amountOfCards +'</span><br />Incorrect Answers: <span id="incorrect"><span id="correct">0/' + amountOfCards +'</span></div>');
@@ -90,7 +94,7 @@ $(document).ready(function(){
     console.log("here's the results, guys");
     $('#quizdiv').hide(); 
     var finalResults = "<br /><h2>Quiz Completed! </h2><br /><h2>Score: " + correctAnswers.length/amountOfCards* 100 + "%"; 
-    $('body').append(finalResults); 
+    $('.quizended').show().append(finalResults); 
 
   }
 });
