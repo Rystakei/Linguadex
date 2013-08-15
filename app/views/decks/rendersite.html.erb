@@ -22,7 +22,8 @@
     <div id = "wordbank"> 
       Double click on terms in the article below to add them to the wordbank. 
       <br /><br />
-    <span class="label">Done</span>
+    <a href="#" id="submit-cards">Done</a>
+
       <hr>
       </p>
 
@@ -83,7 +84,9 @@ function getTranslation(term){
       $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + term + ' </span></div>');
       //Add the definition to definitions div
 	    $('#addingdefinitions').append('<div class="selection"><span class="label">Definition:</span> '+ translation + "</div>");
+      termsArray.push(term);
       definitionsArray.push(translation);
+
 	    }
 	});
 };
@@ -114,7 +117,6 @@ Kolich.Selector.mouseup = function(){
     // var selection = $('#addingterms').append('<div class="selection"><span class="label">Term:</span> <span class="justadded">' + st + ' </span></div>');
     // var newTerm = $('.justadded').first().text(); 
     var newTerm = "" + st + ""; 
-    termsArray.push(newTerm);
     getTranslation(newTerm); 
     $('.justadded').removeClass('justadded');
   }
@@ -133,6 +135,39 @@ function addDeck() {
 
   $.post('deck/create', data)
 }
+var d = new Date();
+
+$('#submit-cards').click(function() {
+  createDeck();
+});
+
+function createDeck() {
+  $.post("/decks", { deck: { name: d, language: "French"}}, 
+    function(data) {
+      console.log("Success! Here's the new Deck ID: " + data);
+      createCards(data);
+      window.location.href = "/decks/" + data;
+    }, "json"); 
+}
+
+function createCards(deckId) {
+
+  // termsArray, definitionsArray
+  // for each term in termsArray, we want to:
+  //  Create a new card
+  //  With the term and definition from the appropriate index of those arrays
+
+  for (i=0; i < termsArray.length; i++){
+      $.post("/cards", {card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}}, 
+        function(data) {
+          console.log("Yes! We've made cards! Here's the data: " + data);
+      }, "json");  
+  }
+
+  
+
+}
+
 
  </script>
 </body>

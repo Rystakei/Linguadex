@@ -1,4 +1,5 @@
 class DecksController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   # GET /decks
   # GET /decks.json
   def index
@@ -46,7 +47,7 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
-        format.json { render json: @deck, status: :created, location: @deck }
+        format.json { render json: @deck.id, status: :created, location: @deck }
       else
         format.html { render action: "new" }
         format.json { render json: @deck.errors, status: :unprocessable_entity }
@@ -65,11 +66,12 @@ class DecksController < ApplicationController
   end
 
     def rendersite
-    @deck = Deck.new
+    @deck = Deck.new(language: "french", name: Time.now)
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @deck }
+      format.js
     end
 
   end
