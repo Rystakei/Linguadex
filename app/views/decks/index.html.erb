@@ -1,17 +1,18 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<%= render 'header' %>
-<div class = "secondheader"><h2 class = "secondheader">All User's Decks</h2> </div>
-<div class = "decorative"></div>
-
 <div class = "centered">
-
-    <h2>Total Decks: <%= Deck.all.size %></h2>
+    <h2>Your Decks</h2>
+    <h3> Total: <%= Deck.all.size %></h3>
     All of your current decks are listed below.
     <br/><br />
 </div> 
 
 
-<div class = "centered"><div class = "emphasis"><h3> <%= link_to 'Add Deck', new_deck_path %></h3></div></div><br />
+<div class = "centered bam">
+    <h2><%= link_to 'Add Deck By Hand', new_deck_path %></h3>
+    <h2><%= link_to 'Add Deck From Website', rendersite_path %></h2>
+
+</div>
+<br />
 
 <div class = "tablesupport">
 <table>
@@ -20,20 +21,16 @@
     <th>Subject</th>
     <th>How Many Cards</th>
     <th>Times Reviewed</th>
-    <th>Results</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @decks.each do |deck| %>
   <tr>
-    <td><%= deck.name %></td>
+    <td><%= link_to deck.name, deck %></td>
     <td><%= deck.subject %></td>
     <td><%= deck.cards.length %></td>
     <td><%= deck.times_reviewed %></td>
-    <td><%= deck.results %></td>
-    <td><%= link_to 'Show', deck %></td>
     <td><%= link_to 'Edit Deck', edit_deck_path(deck) %></td>
     <td><%= link_to 'Destroy', deck, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

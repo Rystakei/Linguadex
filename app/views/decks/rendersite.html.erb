@@ -8,6 +8,7 @@
 <p id="deckid"><%= @deck.id %></p>
 <% url = "http://www.lemonde.fr/sport/article/2013/08/13/perche-la-tsarine-isinbayeva-triomphe-devant-son-public_3461124_3242.html" %>
 <% doc = Nokogiri::HTML(open(url)) %>
+<div id = "stickyribbon">
 <div class = "headingdiv">
 	<div class = "emphasis"><!-- 
 		<h3> <%= link_to 'Add Deck', new_deck_path %></h3> -->
@@ -67,6 +68,22 @@ Send the results to Rails
 
  
  <script>
+
+
+ $(document).ready(function() {
+
+    $(window).scroll(function() {
+         var header = $(document).scrollTop();
+     
+         if (header > 30 ) { // Change this number to the amount you want to scroll before the header sticks
+              $('#stickyribbon').addClass('sticky');
+         } else {
+              $('#stickyribbon').removeClass('sticky');
+         }
+    });
+ });
+
+
  termsArray = [];
  definitionsArray = []; 
 
@@ -164,7 +181,18 @@ function createCards(deckId) {
       }, "json");  
   }
 
-  
+ $(function(){
+        var stickyRibbonTop = $('#stickyribbon').offset().top;
+          
+        $(window).scroll(function(){
+                if( $(window).scrollTop() > stickyRibbonTop ) {
+                        $('#stickyribbon').css({position: 'fixed', top: '0px'});
+                } else {
+                        $('#stickyribbon').css({position: 'static', top: '0px'});
+                }
+        });
+}); 
+
 
 }
 

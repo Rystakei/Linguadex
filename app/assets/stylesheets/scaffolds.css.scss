@@ -4,11 +4,18 @@
 @import url(http://fonts.googleapis.com/css?family=Cookie);
 @import url(http://fonts.googleapis.com/css?family=Lato);
 
-$bodycolor: #FFFDF7; 
+$oldbodycolor: #FFFDF7; 
+$bodycolor: white;
 $headercolor: #04859D;
-$secondheadercolor: #206876;
+$secondheadercolor: white;
+$oldsecondheadercolor: #206876;
 $headingcolor: #37395B;
-$tableheadercolor: orange;
+$tableheadercolor: #1D2951;
+
+
+/*$bodycolor: #04859D;*/
+$headercolor: #1D2951;
+$tableheadercolor:#04859D;
 
 * {
   webkit-box-sizing: border-box;
@@ -130,43 +137,73 @@ table {
 }
 
 th {
-  background-color: lighten($tableheadercolor, 30%);
+  background-color: $tableheadercolor;
+  color: white;
+  font-size: 20px;
+  font-family: "Lobster";
+  color: white;
+  text-shadow: 2px 2px 5px #800000;
+  margin-bottom: 10px;
+
+      &:hover {
+    color: white;
+  }
 }
 
+
 td {
-  border: orange dashed 1px;
+  border: $tableheadercolor dashed 1px;
+  font-family: "Bree Serif";
+  font-size: 16px;
+
 }
 
 tr {
-  border: orange solid 1px;
+  border: $tableheadercolor solid 1px;
+
+
 
     &:hover {
-    background-color: $headercolor;
     color: white;
-  }
+    background-color: $headercolor;
+      a{
+      color: white;
+      }
+      a:visited{
+      color: white;
+      }
+   }
 }
 
 
 .header {
   background-color: $headercolor;
   font-weight: lighter;
+  border-bottom: $tableheadercolor solid 5px;
 }
 .secondheader {
   background-color: $secondheadercolor;
 }
 h2.secondheader {
-  color: white;
+  color: $oldsecondheadercolor;
 }
 
-.decorative {
-  background-color: orange;
-  height: 5px;
-  text-align: center;
-}
 .centered {
   text-align: center;
   margin: 0 auto;
   width: 500px; 
+}
+
+.centered{
+  h2,h3{
+    font-family: "Lobster";
+    color: $headercolor;
+    text-shadow: 2px 2px 5px #FFFFFF;
+
+  }
+  h3{
+    color: $tableheadercolor;
+  }
 }
 
 #quizdiv input {
@@ -254,14 +291,14 @@ box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
 }
 
 .indexcontainer {
-  background-color: $headercolor;
+  background-color: $tableheadercolor;
   width: 100%;
   height: 100%;
   color: white;
 }
 
 .indexcontainer h1 {
-  font-size: 300px;
+  font-size: 250px;
   text-shadow: 2px 2px 5px #800000;
 }
 
@@ -400,7 +437,9 @@ h2.signingup {
 
 .background{
   background-color: $headercolor;
+  color: white;
   padding: 0px;
+  padding-top:5px;
   margin: 0px;
 }
 .background a {
@@ -472,7 +511,6 @@ text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 }
 
 .urldiv {
-  border-bottom: black solid 4px;
   background-color: $headercolor;
   width: 100%;
   p {
@@ -484,13 +522,16 @@ text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
   font-family: 'PT Sans Narrow';
   color: white;
   text-align: left;
-  border: black solid 1px;
 
 }
+
+
 
 .addingcards{
   padding: 0px;
   margin: 0px;
+  height:400px;
+  overflow:scroll;
 }
 
 #addingterms{
@@ -499,6 +540,7 @@ text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
   display: inline-block;
   padding: 0px;
   margin: 0px;
+  vertical-align: top;
 }
 
 #addingdefinitions{
@@ -512,9 +554,41 @@ text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 .selection{
   border: $headercolor solid 1px;
   width:100%;
+  height: 45px;
+  vertical-align: top;
 }
 
 .selectionheaders{
-  background-color: $secondheadercolor;
+  background-color: $tableheadercolor;
   color: white;
+}
+
+.bam h2{
+  font-size: 30px;
+  font-family: "Lobster";
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.1),
+               0px 18px 23px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+
+    &:hover {
+    color: gray;
+  }
+
+
+}
+
+.bam h3{
+  font-family: "Lobster";
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.1),
+               0px 18px 23px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
+#stickyribbon{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  margin: 0;
 }
