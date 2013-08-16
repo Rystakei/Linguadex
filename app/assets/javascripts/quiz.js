@@ -102,7 +102,9 @@ function incrementQuizCounter(){
         
       } else {
   			$('#notification').show(); 
-  			$('#notification').text("Sorry, your answer '" + answer.val() + "' is incorrect.  The answer should be: '" + definitions[cardIndices[counter]] + "'"); 
+  			$('#notification').text("Sorry, your answer '" + answer.val() + "' is incorrect.  The answer should be: '" + definitions[cardIndices[counter]] + "'");
+          incorrectAnswers.push(answer.val()); 
+        $('#incorrect').first().text(incorrectAnswers.length + "/" + amountOfCards);
       }
     }); //end onclick function
 
@@ -111,7 +113,7 @@ function incrementQuizCounter(){
   function results(amountOfCards, correctAnswers, incorrectAnswers) {
     console.log("here's the results, guys");
     $('#quizdiv').hide(); 
-    var finalResults = "<br /><h2>Quiz Completed! </h2><br /><h2>Score: " + correctAnswers.length/amountOfCards* 100 + "%"; 
+    var finalResults = "<br /><h2>Quiz Completed! </h2><br /><h2>Score: " + ((correctAnswers.length-incorrectAnswers.length)/amountOfCards* 100).toFixed(2) + "%"; 
     $('.quizended').show().append(finalResults); 
     incrementQuizCounter();
     // <% @deck.times_reviewed == @deck.times_reviewed + 1 %>
