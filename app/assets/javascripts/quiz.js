@@ -1,4 +1,20 @@
+var total_quizzes = 0; 
+
 $(document).ready(function(){
+
+function incrementQuizCounter(){
+  total_quizzes++; 
+  console.log(total_quizzes);
+  $.ajax({
+      url: '/decks/'+deckId,
+      type: 'PUT',
+      data: {deck: { times_reviewed: total_quizzes} },
+      success: function(result) {
+          // Do something with the result
+      }
+  });
+}; 
+
 
   //hide the id
 
@@ -22,8 +38,10 @@ $(document).ready(function(){
   	$.each(data.cards, function(index, card){
     		terms.push(card.term);
     		definitions.push(card.definition);
+        
     	
     	});
+    total_quizzes = data.times_reviewed;
     	setupQuiz();
   });
 
@@ -95,6 +113,9 @@ $(document).ready(function(){
     $('#quizdiv').hide(); 
     var finalResults = "<br /><h2>Quiz Completed! </h2><br /><h2>Score: " + correctAnswers.length/amountOfCards* 100 + "%"; 
     $('.quizended').show().append(finalResults); 
+    incrementQuizCounter();
+    // <% @deck.times_reviewed == @deck.times_reviewed + 1 %>
+    // <% @deck.save %>
 
   }
 });
