@@ -454,6 +454,17 @@ h2.signingup {
   color: white;
 }
 
+.background2{
+  background-color: $headercolor;
+  color: white;
+  padding: 0px;
+  padding-top:5px;
+  margin: 0px;
+}
+.background2 a {
+  color: white;
+}
+
 h3 a{
   color: black;
 }
@@ -510,7 +521,7 @@ width: 100%;
   }
   font-family: "Bree Serif";
   font-size: 20px;
-  background-color: #1D2951;
+  background-color: lighten($headercolor, 0%);
 text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1);
@@ -521,7 +532,7 @@ text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
 }
 
 .urldiv {
-  background-color: $headercolor;
+  background-color: lighten($headercolor, 10%);
   width: 100%;
   p {
     font-size: 20px;

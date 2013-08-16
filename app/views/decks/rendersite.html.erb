@@ -9,6 +9,16 @@
 <% url = "http://www.lemonde.fr/sport/article/2013/08/13/perche-la-tsarine-isinbayeva-triomphe-devant-son-public_3461124_3242.html" %>
 <% doc = Nokogiri::HTML(open(url)) %>
 <div id = "stickyribbon">
+<!-- Display to signed in user -->
+<% if user_signed_in? %>
+<div class = "lingheader"> <h1>Linguadex</h1></div>
+<p class="navbar-text pull-right background2 clear">
+  User: <strong><%= current_user.email %></strong>
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% end %>
+<!-- End display -->
+
 <div class = "headingdiv">
 	<div class = "emphasis"><!-- 
 		<h3> <%= link_to 'Add Deck', new_deck_path %></h3> -->
