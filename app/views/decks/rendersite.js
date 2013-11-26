@@ -1,84 +1,3 @@
-<html>
-<head>
-  </head>
-  <body>
-
-<% require 'open-uri' %>
-<p id="notice"><%= notice %></p>
-<p id="deckid"><%= @deck.id %></p>
-<% url = "http://www.lemonde.fr/sport/article/2013/08/13/perche-la-tsarine-isinbayeva-triomphe-devant-son-public_3461124_3242.html" %>
-<% doc = Nokogiri::HTML(open(url)) %>
-<div id = "stickyribbon">
-<!-- Display to signed in user -->
-<% if user_signed_in? %>
-<div class = "lingheader"> <h1>Linguadex</h1></div>
-<p class="navbar-text pull-right background2 clear">
-  User: <strong><%= current_user.email %></strong>
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% end %>
-<!-- End display -->
-
-<div class = "headingdiv">
-	<div class = "emphasis"><!-- 
-		<h3> <%= link_to 'Add Deck', new_deck_path %></h3> -->
-  </div>
-  <div class = "urldiv">
- Viewing website: <input value="http://www.lemonde.fr"></input>
-</div>
-  <div id = "results">
-   <h2>Selected Terms and Definitions</h2>
-    <br />
-    <br /> 
-    <div id = "wordbank"> 
-      Double click on terms in the article below to add them to the wordbank. 
-      <br /><br />
-    <a href="#" id="submit-cards">Done</a>
-
-      <hr>
-      </p>
-
-
-      <div class="addingcards">
-        <div id="addingterms">
-         <div class="selectionheaders">Terms</div> 
-
-        </div>
-        <div id="addingdefinitions"><div class="selectionheaders">Definitions</div>
-        </div>
-    </div>
-
-   
-    </div>
-  </div>
- </div>
-</div>
-<br />
-
-<div>
-<%= raw(doc.to_html) %>
-
-
-</div>
-<p> You can use this feature to enter a url, load the page, and add selected text to the terms.
-	If definitions are available, we will provide the definitions and then allow you to submit your deck.
-</p>
-
-
-<h2> The words you've selected are: </h2>
-<div id = "results"> 
-
-
-</div>
-
-Get highlighted words and push them into an array
-Look up definitions
-Send the results to Rails
-
-
- 
- <script>
-
 
  $(document).ready(function() {
 
@@ -171,30 +90,56 @@ $('#submit-cards').click(function() {
 });
 
 function createDeck() {
-  var deckId = 0;
   $.post("/decks", { deck: { name: d, language: "French"}}, 
     function(data) {
       console.log("Success! Here's the new Deck ID: " + data);
-        for (i =0; i < termsArray.length; i++){
-          createCards(data);
-        }
-        deckId = data;
-        window.location.href = "/decks/" + deckId;
+      createCards(data);
+      window.location.href = "/decks/" + data;
     }, "json"); 
-
-}
-
-function createCards(deckId) {
-
-  $.post('/cards', {card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}},
-    function(data){
-      console.log("New card: " + data)
-    },
-    "json"
-    );
 }
 
 
- </script>
-</body>
-</html>
+function createCards(deckId){
+
+    $.ajax({
+      url: "/cards",
+      type: "POST",
+      data: {"_method":"PUT", card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}},
+      success: function(result) {
+              console.log("Just updated this data: " + data);
+              }
+    });
+  }
+
+function createCards2(deckId) {
+
+  // termsArray, definitionsArray
+  // for each term in termsArray, we want to:
+  //  Create a new card
+  //  With the term and definition from the appropriate index of those arrays
+
+  for (i=0; i < termsArray.length; i++){
+      $.post("/cards", {card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}}, 
+        function(data) {
+          console.log("Yes! We've made cards! Here's the data: " + data);
+      }, "json");  
+  }
+
+ $(function(){
+        var stickyRibbonTop = $('#stickyribbon').offset().top;
+          
+        $(window).scroll(function(){
+                if( $(window).scrollTop() > stickyRibbonTop ) {
+                        $('#stickyribbon').css({position: 'fixed', top: '0px'});
+                } else {
+                        $('#stickyribbon').css({position: 'static', top: '0px'});
+                }
+        });
+}); 
+
+
+}
+
+
+
+
