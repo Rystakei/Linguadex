@@ -12,6 +12,7 @@
   <% end %>
 
   <div class="field centered">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     Deck's <%= f.label :name %>
     <%= f.text_field :name %>
     <br />
