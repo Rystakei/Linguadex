@@ -164,14 +164,16 @@ function addDeck() {
 
   $.post('deck/create', data)
 }
-var d = new Date();
+var time = new Date().toDateString();
+console.log("This is the time" + time);
+
 
 $('#submit-cards').click(function() {
   createDeck();
 });
 
 function createDeck() {
-  $.post("/decks", { deck: { name: d, language: "French"}}, 
+  $.post("/decks", { deck: { name: time, language: "French"}}, 
     function(data) {
       console.log("Success! Here's the new Deck ID: " + data);
       $('#deckid').text(data);
