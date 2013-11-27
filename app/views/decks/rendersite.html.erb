@@ -171,26 +171,32 @@ $('#submit-cards').click(function() {
 });
 
 function createDeck() {
-  var deckId = 0;
   $.post("/decks", { deck: { name: d, language: "French"}}, 
     function(data) {
       console.log("Success! Here's the new Deck ID: " + data);
-        for (i =0; i < termsArray.length; i++){
-          createCards(data);
-        }
-        deckId = data;
+      $('#deckid').text(data);
+      var deckId = $('#deckid').text();
+      createCards(deckId);
     }, "json"); 
+
+  
 
 }
 
-function createCards(deckId) {
 
-  $.post('/cards', {card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}},
-    function(data){
-      console.log("New card: " + data)
-    },
-    "json"
-    );
+function createCards(deckId) {
+  for (i=0; i < termsArray.length; i++){
+    $.post('/cards', {card: {deck_id: deckId, term: termsArray[i], definition: definitionsArray[i]}},
+      function(data){
+        console.log("New card: " + data)
+      },
+      "json"
+      );
+      //delays the page redirect until all AJAX requests on the page have finished
+      $(document).ajaxStop(function(){
+        window.location.href = "/decks/" + deckId;  
+      })
+  }
 }
 
 
