@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.nested-fields
+//= require chart
 
 $(document).ready(function(e) {
   $('FORM').nestedFields();
